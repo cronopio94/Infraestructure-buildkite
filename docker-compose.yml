@@ -3,9 +3,7 @@ services:
   nodejs:
     container_name: docker-node-mongo
     restart: always
-    build:
-      context: .
-      dockerfile: nodejs.dockerfile
+    build: .
     ports:
       - '8080:3000'
     links: 
