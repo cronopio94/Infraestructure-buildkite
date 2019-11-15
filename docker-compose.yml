@@ -1,12 +1,15 @@
-version: '1'
+version: '3'
 services: 
   nodejs:
     container_name: docker-node-mongo
     restart: always
-    build: .
+    build:
+      context: .
+      dockerfile: nodejs.dockerfile
     ports:
-      - '80:3000'
-    links: mongo  
+      - '8080:3000'
+    links: 
+      - mongo  
   mongo:
     container_name: mongo
     image: mongo

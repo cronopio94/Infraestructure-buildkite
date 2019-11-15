@@ -21,5 +21,12 @@ router.get('/', function(req, res, next) {
 
 
 });
+router.post('/item/add', function(req, res, next){
+  const newItem = new Item({
+    name: req.body.name
+  });
+
+  newItem.save().then(item => res.redirect('/'));
+})
 
 module.exports = router;
