@@ -1,3 +1,18 @@
 <h1>{{title}}</h1>
+<body>
 <p>Welcome to docker
 </p>
+<form method="post" action="/item/add">
+    <label for="name">Name</label>
+    <input type="text" name="name">
+    <input type="submit" value="Add">
+  </form>
+  <h4>Items:</h4>
+  <ul>
+    <% items.forEach(function(item) { %>
+      <li>
+        <%= item.name %>
+      </li>
+      <% }); %>
+  </ul>
+</body>
