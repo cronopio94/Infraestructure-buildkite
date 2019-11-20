@@ -1,0 +1,23 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-deployment
+spec:
+  replicas: 1 
+  selector: 
+    matchLabels: 
+      app: nodejs-example
+  template: 
+    metadata: 
+      labels:
+        app: nodejs-example
+    spec: 
+      containers:
+      - image: cronopio94/nodeapptest:latest
+        name: nodeapp
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env: 
+          - name: MONGO_URL
+            value: mongodb://mongoservice.default.svc.cluster.local:27017

@@ -1,0 +1,20 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+spec:
+  replicas: 1 
+  selector: 
+    matchLabels: 
+      app: mongo-example
+  template: 
+    metadata: 
+      labels:
+        app: mongo-example
+    spec: 
+      containers:
+      - image: mongo:latest
+        name: mongo
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 27017

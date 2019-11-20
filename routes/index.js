@@ -8,7 +8,7 @@ const Item = require('../models/Item')
 router.get('/', function(req, res, next) {
   mongoose
   .connect(
-    'mongodb://mongo:27017/docker-node-mongo',
+    process.env.MONGO_URL, 
     { useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected'))
