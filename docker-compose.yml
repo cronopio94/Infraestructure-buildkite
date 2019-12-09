@@ -8,13 +8,27 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - '8080:3000'
+      - '3000:3000'
     links: 
-      - mongo  
+      - mongo
+    environment:
+    - MONGO_URL=mongodb://mongo:27017/docker-node-mongo    
   mongo:
     container_name: mongo
     image: mongo
     ports:
       - '27017:27017'
-    environment:
-    - MONGO_URL=mongodb://mongo:27017/docker-node-mongo  
+  vault:
+    container_name: vault
+    image: vault
+    ports:
+      - "8200:8200"
+    restart: always
+    volumes:
+      - ./volumes/logs:/vault/logs
+      - ./volumes/file:/vault/file
+      - ./volumes/config:/vault/config
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config/vault.json    
+   

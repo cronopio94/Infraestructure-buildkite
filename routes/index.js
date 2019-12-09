@@ -1,32 +1,25 @@
 var express = require('express');
 var router = express.Router();
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const Item = require('../models/Item')
+const Item = require('../models/Item');
+const getName = require('../services/itemService')
+const connectToMongo = require ('../services/mongoService')
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  mongoose
-  .connect(
-    process.env.MONGO_URL, 
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+ console.log(process.env.MONGO_URL) 
+connectToMongo(process.env.MONGO_URL);
 
-  //const Item = require('./models/Item');
   Item.find()
   .then(items => res.render('index', { items }))
   .catch(err => res.status(404).json({ msg: 'No items found' }));
 
-
 });
+
 router.post('/item/add', function(req, res, next){
   const newItem = new Item({
-    name: req.body.name
+    name: getName(req)
   });
 
-  newItem.save().then(item => res.redirect('/'));
+  newItem.save().then(() => res.redirect('/'));
 })
 
 module.exports = router;
