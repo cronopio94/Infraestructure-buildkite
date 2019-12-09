@@ -27,3 +27,5 @@ To run an agent and vault server is needed go to the path ```buildkite_agent``` 
 ```docker-compose up``` that enables the agent and the vault server.
 
 Then make changes in the code, commit and push the pipeline will be running
+
+NOTE: Add a webhook in github, to let the pipeline catch the changes in the repo
