@@ -12,6 +12,7 @@ To build the nodejs app locally is needed to run the command
 ```docker-compose up``` in the path ```DITeambuildkite```
 
 ## **Minikube**
+
 The next steps must be followed:
 1. Start minikube `minikube start`
 1. Create the deployments `kubectl apply [deployment.yml]`
