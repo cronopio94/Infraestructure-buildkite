@@ -23,7 +23,7 @@ The next steps must be followed:
 
 ## **Run an agent and push to quay**
 
-To run an agent and vault server is needed go to the path ```buildkite_agent``` and run: 
+- To run an agent and vault server is needed go to the path ```buildkite_agent``` and run: 
 
 ```docker-compose up``` that enables the agent and the vault server.
 
