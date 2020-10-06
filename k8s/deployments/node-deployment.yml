@@ -21,3 +21,8 @@ spec:
         env: 
           - name: MONGO_URL
             value: mongodb://mongoservice.default.svc.cluster.local:27017
+        envFrom:
+        - secretRef:
+            name: secret
+        - configMapRef:
+            name: configmap
