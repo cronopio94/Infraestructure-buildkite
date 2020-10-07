@@ -1,3 +1,4 @@
 node_modules
 volumes
 buildkite_agent/volumes
+.idea
