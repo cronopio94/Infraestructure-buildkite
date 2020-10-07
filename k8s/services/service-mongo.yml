@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongoservice
+  namespace: test
 spec: 
   selector:
     app: mongo-example

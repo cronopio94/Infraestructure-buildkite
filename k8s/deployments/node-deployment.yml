@@ -2,6 +2,7 @@ apiVersion : apps/v1
 kind: Deployment
 metadata:
   name: nodejs-deployment
+  namespace: test
 spec:
   replicas: 1 
   selector: 
@@ -20,9 +21,4 @@ spec:
         - containerPort: 3000
         env: 
           - name: MONGO_URL
-            value: mongodb://mongoservice.default.svc.cluster.local:27017
-        envFrom:
-        - secretRef:
-            name: secret
-        - configMapRef:
-            name: configmap
+            value: mongodb://mongoservice.test.svc.cluster.local:27017 #mongodb://mongoservice.[namespace].svc.cluster.local:27017
